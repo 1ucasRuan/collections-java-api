@@ -15,6 +15,36 @@ public class ListaTarefa {
     }
 
     public void removerTarefa (String descricao){
-        tarefaList.removeAll(tarefaList);
+        
+        List <Tarefa> tarefasParaRemover = new ArrayList<>();
+        for (Tarefa t : tarefaList) {
+            if (t.getDescricao().equalsIgnoreCase(descricao)) {
+                tarefasParaRemover.add(t);
+            }
+        }
+        tarefaList.removeAll(tarefasParaRemover);
+    }
+
+    public int obterNumeroTotalTarefas(){
+        return tarefaList.size();
+    }
+
+    public void obterDescricaoTarefa(){
+        System.out.println(tarefaList);
+        
+    }
+
+    public static void main(String[] args) {
+        ListaTarefa listaTarefa = new ListaTarefa();
+        listaTarefa.adicionatTarefa("tarefa 1");
+        listaTarefa.adicionatTarefa("tarefa 2");
+        listaTarefa.adicionatTarefa("tarefa 3");
+
+        System.out.println(listaTarefa.obterNumeroTotalTarefas());
+
+        listaTarefa.removerTarefa("tarefa 2");
+        System.out.println(listaTarefa.obterNumeroTotalTarefas());
+
+        listaTarefa.obterDescricaoTarefa();
     }
 }
